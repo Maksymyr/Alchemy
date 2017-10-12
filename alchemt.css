@@ -1,0 +1,98 @@
+body{
+	margin: 0;
+}
+#pos-wrap{
+	width: 1300px;
+	height: 1300px;
+	margin: 0 auto;
+	position: relative;
+	/* background-color: red; */
+}
+#slider{
+	width: 1200px;
+	height: 140px;
+	background-color: #C2D8DB;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+#slider_container{
+	width: 3600px;
+	height: 140px;
+	/* opacity: 0.3; */
+	background-color: #577EEE;
+	box-sizing: border-box;
+	padding-top: 40px;
+	padding-left: 10px;
+	position: relative;
+	/* transition: 1s; */
+
+}
+
+.item{
+	width: 60px;
+	height: 60px;
+	background-color: transparent;
+	float: left;
+	margin-right: 15px;
+    background-size: 100% 100%;
+}
+#clone {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-right: 15px;
+}
+
+#slide-left{
+	position: absolute;	
+	z-index: 10;
+	right: 0;
+	top: 0;
+}
+
+#slide-right{
+	position: absolute;
+	z-index: 10;
+	left: 0;
+	top: 0;
+}
+
+#element-1{
+	width: 120px;
+	height: 120px;
+	background-color: #7ECA78;
+	position: absolute;
+	left: 420px;
+	top: 200px;
+
+}
+
+#element-2{
+	width: 120px;
+	height: 120px;
+	background-color: #7ECA78;
+	position: absolute;
+	left: 720px;
+	top: 200px
+}
+
+#element_result{
+
+	width: 120px;
+	height: 120px;
+	background-color: #ED8E8E;
+	position: absolute;
+	left: 570px;
+	top: 500px;
+}
+.mix {
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    left: 605px;
+    top: 400px;
+    text-align: center;
+    padding: 0;
+    outline: none;
+}
