@@ -1,98 +1,304 @@
+html,body{
+    overflow-y:hidden;
+}
+
 body{
-	margin: 0;
+    margin: 0;
+}
+
+#tooltip {
+    z-index: 9999;
+    position: absolute;
+    top:0px;
+    left:0px;
+    background-color: #000;
+    padding: 5px 10px 5px 10px;
+    color: white;
+    opacity: 0;
+    border-radius: 5px;
+    max-width: 80px;
+    text-align: center;
+    animation: tooltip-anim 2s;
+    animation-fill-mode: forwards;
+    transition: 1s;
 }
 #pos-wrap{
-	width: 1300px;
-	height: 1300px;
-	margin: 0 auto;
-	position: relative;
-	/* background-color: red; */
+    width: 100%;
+    height: 1300px;
+    margin: 0 auto;
+    position: relative;
+    background-color: #260126;
 }
 #slider{
-	width: 1200px;
-	height: 140px;
-	background-color: #C2D8DB;
-	margin: 0 auto;
-	position: relative;
-	overflow: hidden;
+    width: 100%;
+    height: 200px;
+    background-color: #380128;
+    margin: 0 auto;
+    position: relative;
+    right: 0;
+    overflow: hidden;
+    border-bottom: 5px solid #1b001c;
 }
 #slider_container{
-	width: 3600px;
-	height: 140px;
-	/* opacity: 0.3; */
-	background-color: #577EEE;
-	box-sizing: border-box;
-	padding-top: 40px;
-	padding-left: 10px;
-	position: relative;
-	/* transition: 1s; */
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    /* opacity: 0.3; */
+    box-sizing: border-box;
+    padding-top: 25px;
+    padding-left: 15px;
+    position: relative;
+    /*transition: 500ms;*/
 
 }
-
 .item{
-	width: 60px;
-	height: 60px;
-	background-color: transparent;
-	float: left;
-	margin-right: 15px;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 15px;
     background-size: 100% 100%;
+    position: relative;
 }
+
 #clone {
     width: 60px;
     height: 60px;
     float: left;
     margin-right: 15px;
+    background-size: 100% 100%;
+    background-color: transparent;
 }
 
 #slide-left{
-	position: absolute;	
+	right: 20px;
+	top: 10px;
+	position: absolute;
 	z-index: 10;
-	right: 0;
-	top: 0;
 }
 
 #slide-right{
+	left: 20px;
+	top: 10px;
 	position: absolute;
 	z-index: 10;
-	left: 0;
-	top: 0;
-}
 
+}
+.elem-boxes {
+    opacity: 0.6;
+    width: 140px;
+    height: 140px;
+    background-color: #380128;
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+}
 #element-1{
-	width: 120px;
-	height: 120px;
-	background-color: #7ECA78;
-	position: absolute;
-	left: 420px;
-	top: 200px;
-
+    opacity: 0.6;
+    width: 140px;
+    height: 140px;
+    background-color: #380128;
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+	left: 30%;
+	top: 250px;
 }
-
-#element-2{
-	width: 120px;
-	height: 120px;
-	background-color: #7ECA78;
+#color{
+	background-color: transparent;
+	width: 1px;
+	height: 1px;
 	position: absolute;
-	left: 720px;
-	top: 200px
+	left: 70px;
+	top: 70px;
+	border-radius: 50%;
+	transition: 0.7s
+}
+#element-2{
+    opacity: 0.6;
+    width: 140px;
+    height: 140px;
+    background-color: #380128;
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+	left: 57%;
+	top: 250px;
+}
+#anim_class_elem1 {
+    opacity: 0.6;
+    width: 140px;
+    height: 140px;
+    background-color: #380128;
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+    left: 30%;
+    top: 250px;
+    animation: anim-for-elems 2s;
+    animation-fill-mode: forwards;
+}
+#anim_class_elem2 {
+    opacity: 0.6;
+    width: 140px;
+    height: 140px;
+    background-color: #380128;
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+    left: 57%;
+    top: 250px;
+    animation: anim-for-elems 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes anim-for-elems {
+    0% {
+
+    }
+    100% {
+        opacity: 0;
+        left: 44.5%;
+        top: 400px;
+    }
 }
 
 #element_result{
 
 	width: 120px;
 	height: 120px;
-	background-color: #ED8E8E;
+	/*background-color: #ED8E8E;*/
 	position: absolute;
-	left: 570px;
-	top: 500px;
+	left: 44.5%;
+	top: 400px;
 }
-.mix {
-    width: 50px;
-    height: 30px;
+.btns{
+	opacity: 0.6;
+	top: 10px;
+	z-index: 10;
+	background: #c0f2c3;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border:none;
+	outline: none;
+	color: #777e81;
+	font: 20px/30px "Comic Sans MS";
+	text-align: center;
+	padding: 0;
+}
+.btns:hover{
+	opacity: 1;
+}
+#mix {
+	position: absolute;
+    top: 260px;
+	text-align: center;
+	padding: 0;
+	left: 44%;
+}
+#append {
     position: absolute;
-    left: 605px;
-    top: 400px;
+    top: 275px;
     text-align: center;
     padding: 0;
-    outline: none;
+    left: 47%;
+    display: none;
+}
+#button_delete {
+	position: absolute;
+    top: 260px;
+	text-align: center;
+	padding: 0;
+	left: 50%;
+}
+
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+/*@media screen and (max-width: 767px){*/
+
+
+/*}*/
+
+/* Small devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	#slider, #slider_container {
+		height: 240px;
+	}
+	.item{
+		width: 160px;
+		height: 160px;
+	}
+
+	.mix, #button_delete {
+		left: 49%;
+		top: 300px;
+	}
+
+	#element-1, #element-2 {
+		width: 340px;
+		height: 340px;
+		top: 300px;
+	}
+
+	#element-1 {
+		left: 7%;
+	}
+
+	#element-2 {
+		left: 64%;
+	}
+
+	.btns {
+		width: 150px;
+		height: 150px;
+		font: 40px/150px "Comic Sans MS";
+	}
+
+	#button_delete, .mix {
+		left: 45%;
+	}
+
+	.mix {
+		top: 500px;
+	}
+
+	#element_result {
+		height: 320px;
+		width: 320px;
+		left: 37%;
+		top: 800px;
+
+	}
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media screen and (min-width: 992px) and (max-width: 1200px){
+	#element-2{
+		left: 32%;
+	}
+	#element-1{
+		left: 80%;
+	}
+	.mix , #button_delete{
+		left: 60%;
+	}
+	#element_result{
+		left: 57%;
+	}
+
+}
+
+@keyframes tooltip-anim  {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.7;
+    }
 }
