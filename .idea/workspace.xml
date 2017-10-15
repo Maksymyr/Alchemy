@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5b141ba-f252-42fe-a1fa-6ab72e74d09c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bootstrap.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/1011.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/13375.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/14506.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/18771.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/26366.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/26517.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/26850.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/28561.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4088.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4090.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4188.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/44879.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/57122.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/9287.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/9307.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/less.js-2.7.2.zip" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alchemt.css" afterPath="$PROJECT_DIR$/alchemt.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alchemy.js" afterPath="$PROJECT_DIR$/alchemy.js" />
-    </list>
+    <list default="true" id="b5b141ba-f252-42fe-a1fa-6ab72e74d09c" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -48,8 +27,8 @@
       <file leaf-file-name="alchemt.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/alchemt.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="258" column="35" lean-forward="false" selection-start-line="258" selection-start-column="35" selection-end-line="258" selection-end-column="35" />
+            <state relative-caret-position="299">
+              <caret line="34" column="22" lean-forward="true" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -168,12 +147,12 @@
       <workItem from="1508011684367" duration="5436000" />
       <workItem from="1508018505131" duration="280000" />
       <workItem from="1508019022203" duration="8066000" />
-      <workItem from="1508053668470" duration="4885000" />
+      <workItem from="1508053668470" duration="5762000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35687000" />
+    <option name="totallyTimeSpent" value="36564000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="709" extended-state="0" />
@@ -311,8 +290,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/alchemt.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="258" column="35" lean-forward="false" selection-start-line="258" selection-start-column="35" selection-end-line="258" selection-end-column="35" />
+        <state relative-caret-position="299">
+          <caret line="34" column="22" lean-forward="true" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="29" />
           <folding />
         </state>
       </provider>

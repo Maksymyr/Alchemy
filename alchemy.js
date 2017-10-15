@@ -1,15 +1,21 @@
 $(function(){
-	var sliderWidth = 0;
-	var text_for_anim = document.getElementById("new-elem-name");
-	var mix_button = document.getElementById("mix");
-	var del_button = document.getElementById("button_delete");
-	var append_button = document.getElementById("append");
-	var box_1 = document.getElementById("element-1");
-	var box_2 = document.getElementById("element-2");
-	var elems_quantity = 4;
-	var drag_type = true;
-	var library_off = true;
-	/* Array of receipts */
+	var sliderWidth = 0,
+		libraryItems = 0,
+		text_for_anim = document.getElementById("new-elem-name"),
+		mix_button = document.getElementById("mix"),
+		del_button = document.getElementById("button_delete"),
+		append_button = document.getElementById("append"),
+		box_1 = document.getElementById("element-1"),
+		box_2 = document.getElementById("element-2"),
+		counting = document.getElementById("count"),
+		elems_quantity = 4,
+		drag_type = true,
+		library_off = true,
+		setting_off = true,
+		library_first = true,
+		setting_first = true;
+	
+				/* Array of receipts */
 	
 	var library = {1000:"Fire",100:"Air",10:"Ground",1:"Water",2000:"Energy",1100:"Smoke",1010:"Lava",1001:"Steam",200:"Pressure",
 		101:"Mist",20:"Land",11:"Mud",2:"Lake",1110:"Stone",1012:"Geyser",1020:"Vulcan",2110:"Brick",1210:"Sand",1120:"Mountain",
@@ -26,10 +32,13 @@ $(function(){
 		1045:"Rain",2165:"Snow",29925:"Milk",32090:"Ice-cream",5386:"Pottery",8541:"Potter",2055:"Swamp",2255:"Peat",2455:"Coal",9950:"Steel"};
 	
 	for (var key in library) {
-		$("<span>"+ library[key] +"</span><br>").appendTo($("#library_box"));
+		var str = $("<p>"+ library[key] +"</p>").appendTo($("#library_box"));
+		$(str).attr("id", "key"+key);
+		libraryItems++;
 	}
+	var libraryHeight = libraryItems*30+10;
 	
-	/* Starting elements */
+				/* Starting elements */
 	
 	for (var i = 0; i < 4; i++) {
 		var boxes = document.getElementsByClassName("item");
@@ -37,6 +46,8 @@ $(function(){
 		boxes[i].setAttribute("name", library[(Math.pow(10,3-i))]);
 		boxes[i].style.backgroundColor = "transparent";
 		boxes[i].style.backgroundImage = "url('images/" + (Math.pow(10,3-i)) + ".svg')"
+		$("#key"+(Math.pow(10,3-i))).remove();
+		libraryHeight -= 25;
 	}
 	
 	$(".item").on("mouseenter", function () {
@@ -47,7 +58,8 @@ $(function(){
 		$("#tooltip").remove();
 	});
 	
-	/* Slider */
+					/* Slider */
+	
 	var father = document.getElementById("slider");
 	var elem = document.getElementById("slider_container");
 	
@@ -90,38 +102,93 @@ $(function(){
 		}
 	});
 	
+					/* Library slider */
+	
+	var library_box = document.getElementById("library_external");
+	var elem_library = document.getElementById("library_box");
+	var delta_library = 0;
+	addOnWheel(library_box, function(e) {
+		if (parseInt($(elem_library).css("height")) >= parseInt($(library_box).css("height"))) {
+			delta_library += e.deltaY|| e.detail || e.wheelDelta / 4;
+			var limit = parseInt($(library_box).css("height"))-libraryHeight;
+			if (delta_library <= 10 && delta_library > limit)
+				$(elem_library).css("top", delta_library + "px");
+			else if (delta_library > 10) {
+				delta_library = 10;
+				$(elem_library).css("top", delta_library + "px");
+			}
+			else {
+				delta_library = limit;
+				$(elem_library).css("top", delta_library + "px");
+			}
+		}
+		else {
+		
+		}
+	});
+	
+							/* Buttons */
+	
 		del_button.onclick = function () {
 			box_1.innerHTML = "";
 			box_2.innerHTML = "";
-	};
+		};
 		
 		settings.onclick = function () {
-			drag_type = !drag_type;
-		};
-		document.getElementById("library").onclick = function () {
-			if (library_off) {
-				document.getElementById("library_box").setAttribute("id", "library_box_anim");
+			if (setting_first) {
+				document.getElementById("setting_external").setAttribute("id", "setting_external_anim");
+				setting_first = false;
 			}
 			else {
-				document.getElementById("library_box_anim").setAttribute("id", "library_box");
+				if (!setting_off) {
+					document.getElementById("setting_external_anim_back").setAttribute("id", "setting_external_anim");
+				}
+				else {
+					document.getElementById("setting_external_anim").setAttribute("id", "setting_external_anim_back");
+				}
+				setting_off = !setting_off;
 			}
-			library_off = !library_off;
+		};
+		
+		switcher.onclick = function () {
+			
+			if (drag_type) {
+				document.getElementsByClassName("pref")[0].innerHTML = "Drag'n'drop";
+				this.setAttribute("id", "switcher-rotate");
+			}
+			else if (!drag_type) {
+				document.getElementsByClassName("pref")[0].innerHTML = "Onclick";
+				this.setAttribute("id", "switcher");
+			}
+			drag_type = !drag_type;
+		};
+		
+		document.getElementById("library").onclick = function () {
+			if (library_first) {
+				document.getElementById("library_external").setAttribute("id", "library_box_anim");
+				library_first = false;
+			}
+			else {
+				if (!library_off) {
+					document.getElementById("library_box_anim_back").setAttribute("id", "library_box_anim");
+				}
+				else {
+					document.getElementById("library_box_anim").setAttribute("id", "library_box_anim_back");
+				}
+				library_off = !library_off;
+			}
 		};
 	document.onmousemove = function(e) {
 		Dragging(e);
 	};
 	
-	
-	
-	/* Onclick */
+				/* Onclick */
+				
 	var click_num = 1;
-	
 	slider.onclick = function () {
 		if (drag_type) {
 			if (event.target.className === "item") {
 				if (click_num === 1) {
-					
-					console.log("1");
 					var clone_data = $(event.target).attr("data");
 					$("<div id='clone'></div>").appendTo(box_1).attr("data", clone_data);
 					var clone = document.getElementById("clone");
@@ -135,16 +202,13 @@ $(function(){
 					clone.style.backgroundSize = "70% 70%";
 					clone.style.backgroundRepeat = "no-repeat";
 					clone.style.backgroundPosition = 'center center';
-					clone.style.backgroundColor = '#380128';
+					clone.style.backgroundColor = '#3c2f2f';
 					$("#clone").removeAttr("id");
 					click_num++;
 				}
 				else if (click_num === 2) {
-					
 					var clone_data = $(event.target).attr("data");
-					console.log("2");
 					$("<div id='clone'></div>").appendTo(box_2).attr("data", clone_data);
-					
 					var clone = document.getElementById("clone");
 					clone.style.backgroundImage = "url('images/" + clone_data + ".svg')";
 					box_2.innerHTML = "";
@@ -156,7 +220,7 @@ $(function(){
 					clone.style.backgroundSize = "70% 70%";
 					clone.style.backgroundRepeat = "no-repeat";
 					clone.style.backgroundPosition = 'center center';
-					clone.style.backgroundColor = '#380128';
+					clone.style.backgroundColor = '#3c2f2f';
 					$("#clone").removeAttr("id");
 					click_num = 1;
 				}
@@ -164,9 +228,7 @@ $(function(){
 		}
 	};
 	
-	
-		
-	/* Drag n Drop: On Mouse Down */
+				/* Drag n Drop: On Mouse Down */
 	
 	slider.onmousedown = function(){
 		if (!drag_type) {
@@ -243,7 +305,7 @@ $(function(){
 	
 	mix_button.onclick = MixingFunc;
 	
-	/* Function for mixing of chosen elements */
+				/* Function for mixing of chosen elements */
 	
 	function MixingFunc () {
 		click_num = 1;
@@ -261,6 +323,7 @@ $(function(){
 				mixResult.style.height = "100%";
 				
 				/* ANIMATION OF SUCCESS */
+				
 				box_1.setAttribute("id","anim_class_elem1");
 				box_2.setAttribute("id","anim_class_elem2");
 				
@@ -269,6 +332,9 @@ $(function(){
 				
 				
 				setTimeout( function () {
+					$("#key"+newData).remove();
+					libraryHeight -= 30;
+					counting.innerHTML = ($(".item").length+1) + "/" + libraryItems;
 					append_button.style.display = 'block';
 					document.getElementById("element_result").appendChild(mixResult);
 					box_1.firstChild.remove();
@@ -330,7 +396,7 @@ $(function(){
 		}
 	}
 	
-	/* Function for getting of object's coordinates */
+				/* Function for getting of object's coordinates */
 	
 	function getCoords(elem) {
 		var box = elem.getBoundingClientRect();
@@ -340,13 +406,11 @@ $(function(){
 		};
 	}
 	
-	/* Function for checking of chosen elements */
+				/* Function for checking of chosen elements */
 	
 	function MixCheck(data) {
 		var array = document.getElementsByClassName("item");
 		var flag = 0;
-		// for (var j = 0; j < correct.length; j ++) {
-		// 	if (data == correct[j]) {
 		for (var key in library){
 			if (data == key) {
 				flag=0;
@@ -366,10 +430,11 @@ $(function(){
 	function WidthChange() {
 		var items = document.getElementsByClassName("item");
 		sliderWidth = ((items.length%2===0) ? (items.length/2)*90+25 : ((items.length+1)/2)*90+25);
-		// $(father).css("width", sliderWidth + "px");
 		$(elem).css("width", sliderWidth + "px");
 	}
 
+				/* Function for infinite mousemove work with element's boxes*/
+	
 	function Dragging (e) {
 			var windowOneTop = getCoords(box_1).top;
 			var windowTwoTop = getCoords(box_2).top;
@@ -382,7 +447,7 @@ $(function(){
 				
 				$('#element-1').css({
 					borderRadius: "50%",
-					backgroundColor: "#380128",
+					backgroundColor: "#4c4242",
 					transform: "scale(1.1)",
 					transition: " 0.5s"
 				});
@@ -390,7 +455,7 @@ $(function(){
 			else if (mouseTop > windowTwoTop && mouseTop < (windowTwoTop + 120) && mouseLeft > windowTwoLeft && mouseLeft < (windowTwoLeft + 120)) {
 				$('#element-2').css({
 					borderRadius: "50%",
-					backgroundColor: "#380128",
+					backgroundColor: "#4c4242",
 					transform: "scale(1.1)",
 					transition: " 0.5s"
 				});
@@ -398,12 +463,12 @@ $(function(){
 			else {
 				$('#element-1').css({
 					transform: "scale(1)",
-					backgroundColor: "#320123",
+					backgroundColor: "#3c2f2f",
 					transition: "0.7s"
 				});
 				$('#element-2').css({
 					transform: "scale(1)",
-					backgroundColor: "#320123",
+					backgroundColor: "#3c2f2f",
 					transition: "0.7s"
 				});
 			}}
